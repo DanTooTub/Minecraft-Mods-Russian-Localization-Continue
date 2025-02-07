@@ -47,11 +47,11 @@ item.crabcooked.name=Жареный краб
 item.elephantchest.name=Слоновый сундук
 item.elephantgarment.name=Слоновое одеяние
 item.elephantharness.name=Слоновая упряжь
-item.elephanthowdah.name=Слоновая хауда
-item.essencedarkness.name=Сущность тьмы
-item.essencefire.name=Сущность огня
-item.essencelight.name=Сущность света
-item.essenceundead.name=Сущность нежити
+item.elephanthowdah.name=Слоновая хаудах
+item.essencedarkness.name=Эссенция тьмы
+item.essencefire.name=Эссенция огня
+item.essencelight.name=Эссенция света
+item.essenceundead.name=Эссенция нежити
 item.fishnet.name=Рыболовная сеть
 item.fur.name=Мех
 item.furboots.name=Меховые сапоги
@@ -181,7 +181,6 @@ item.scorpstingnether.name=Жало адского скорпиона
 item.scorpsworddirt.name=Меч земляного скорпиона
 item.scorpswordcave.name=Меч пещерного скорпиона
 item.scorpswordfrost.name=Меч ледяного скорпиона
-item.scorpswordnether.name=Меч адского скорпиона
 item.scrolloffreedom.name=Свиток освобождения
 item.scrollofowner.name=Свиток сброса владельца
 item.scrollofsale.name=Свиток продажи
@@ -291,4 +290,224 @@ container.MoCreatures.OstrichChest=Страусиный сундук
 container.MoCreatures.WyvernChest=Виверновый сундук
 
 notify.MoCreatures.egg_hatching=Яйцо скоро вылупится! НЕ ОТХОДИТЕ! Существо вылупится @ %1$s, %2$s, %3$s и пропадёт, если уйти далеко.
-notify.MoCreatures.max_pet_count_reached=Нельзя приручить больше существ. Достигнут лимит в %1$s питомцев.
+notify.MoCreatures.max_pet_count_reached=Нельзя приручить больше существ. Достигнут лимит в %1$s питомцев, установленный владельцем сервера.
+
+death.MoCreatures.attack.dehydration=%1$s умер от обезвоживания
+  
+achievements.MoCreaturesTab=Mo' Creatures
+  
+achievement.craft_saddle=Мастер сёдел
+achievement.craft_saddle.desc=Создайте самодельное седло. Наденьте на ездового питомца, чтобы оседлать его. Также седло/снаряжение можно снять при помощи ножниц.
+  
+achievement.tier2_horse=Лошадь 2 уровня
+achievement.tier2_horse.desc=Приручите обычную лошадь из Mo' Creatures с помощью яблока.
+  
+achievement.tier3_horse=Лошадь 3 уровня
+achievement.tier3_horse.desc=Сведите лошадь 2 уровня с обычной лошадью Minecraft, используя тыквы, торт или тушёные грибы.
+  
+achievement.tier4_horse=Лошадь 4 уровня
+achievement.tier4_horse.desc=Сведите лошадь 3 уровня с обычной лошадью Minecraft, используя тыквы, торт или тушёные грибы.
+  
+achievement.zebra=Укротитель зебр
+achievement.zebra.desc=Приручите зебру, подойдя к ней с лошадью 4 уровня и накормив яблоком. Зебры обитают в саваннах.
+  
+achievement.zebra_record=Зебриный трек
+achievement.zebra_record.desc=Добудьте пластинку зебры, скормив приручённой зебре любую из пластинок Minecraft. Это их любимая мелодия.
+  
+achievement.zorse=Зошадь
+achievement.zorse.desc=Сведите приручённую зебру с лошадью, используя тыквы, торт или тушёные грибы.
+  
+achievement.heart_undead=Сердце нежити
+achievement.heart_undead.desc=Добудьте сердце нежити из лошади-нежити.
+  
+achievement.essence_undead=Эссенция нежити
+achievement.essence_undead.desc=Создайте эссенцию нежити.
+  
+achievement.undead_horse=Лошадь-нежить
+achievement.undead_horse.desc=Накормите зошадь или любую другую особую лошадь эссенцией нежити, чтобы вывести новый вид — лошадь-нежить. Она питается только эссенцией нежити.
+  
+achievement.amulet_bone=Хранилище лошадей-скелетов
+achievement.amulet_bone.desc=Создайте костный амулет.
+  
+achievement.ghost_horse=Лошадь-призрак
+achievement.ghost_horse.desc=Иногда при смерти лошади 3 и выше уровней становятся призраками. Они питаются только эссенциями нежити.
+  
+achievement.amulet_ghost=Хранилище лошадей-призраков
+achievement.amulet_ghost.desc=Создайте амулет призрака.
+  
+achievement.heart_fire=Сердце огня
+achievement.heart_fire.desc=Добудьте сердце огня из кошмарной лошади.
+  
+achievement.essence_fire=Эссенция огня
+achievement.essence_fire.desc=Создайте эссенцию огня.
+  
+achievement.nightmare_horse=Кошмарная лошадь
+achievement.nightmare_horse.desc=Накормите приручённую зошадь эссенцией огня, чтобы вывести новый вид — кошмарную лошадь. Она невосприимчива к огню и питается только эссенциями огня.
+  
+achievement.heart_darkness=Сердце тьмы
+achievement.heart_darkness.desc=Добудьте сердце тьмы из летучей лошади.
+  
+achievement.essence_darkness=Эссенция тьмы
+achievement.essence_darkness.desc=Создайте эссенцию тьмы.
+  
+achievement.bat_horse=Летучая лошадь
+achievement.bat_horse.desc=Накормите зошадь эссенцией тьмы. Умеет летать. Питается только эссенциями тьмы.
+  
+achievement.crystal_horse_armor=Кристальная броня
+achievement.crystal_horse_armor.desc=Самая прочная броня для особых лошадей.
+  
+achievement.essence_light=Эссенция света
+achievement.essence_light.desc=Создайте эссенцию света, объединив три базовые эссенции.
+  
+achievement.pegasus=Пегас
+achievement.pegasus.desc=Накормите летучую лошадь эссенцией света выше уровня y = 150. Умеет летать и нести сундук. Питается только эссенциями света.
+  
+achievement.unicorn=Единорог
+achievement.unicorn.desc=Накормите кошмарную лошадь эссенцией света. Может таранить всё и планировать. Питается только эссенциями света.
+  
+achievement.amulet_sky=Хранилище пегасов
+achievement.amulet_sky.desc=Создайте небесный амулет. Огонь для создания добывается с адских крыс.
+  
+achievement.dark_pegasus=Тёмный пегас
+achievement.dark_pegasus.desc=Накормите пегаса эссенцией тьмы, чтобы вывести новый вид — тёмного пегаса. Самая сильная огнестойкая летающая лошадь с сундуком. Питается эссенциями света.
+  
+achievement.fairy_horse=Лошадь-фея!
+achievement.fairy_horse.desc=Скрёстите пегаса с единорогом, используя эссенции света. Выйдет наибыстрейшая летающая лошадь — лошадь-фея. Если скормить лошади-фее краситель, у неё навсегда сменится фейский тип. Питается эссенциями света.
+  
+achievement.amulet_fairy=Хранилище лошадей-фей
+achievement.amulet_fairy.desc=Создайте фейский амулет. Огонь для создания добывается с адских крыс.
+  
+achievement.wyvern_portal_staff=Обитель виверн
+achievement.wyvern_portal_staff.desc=Создайте посох портала виверн и посетите их логово.
+  
+achievement.wyvern_egg=Самый быстрый
+achievement.wyvern_egg.desc=Добудьте яйцо виверны от матери. Питомцы едят сырых крыс и кроликов. Взрослых можно оседлать, одеть броню и дать сундук. Некоторые виды реагируют на эссенции.
+  
+achievement.tame_elephant=Укротитель слонов
+achievement.tame_elephant.desc=Приручите слонёнка или мамонтёнка, делясь с ними кусками сахара.
+  
+achievement.mount_elephant=Слоновий наездник
+achievement.mount_elephant.desc=Оседлайте взрослого слона или мамонта через упряжь. Присядьте рядом, чтобы он сел перед посадкой.
+  
+achievement.mammoth_platform=Платформа для двоих
+achievement.mammoth_platform.desc=Установите платформу на мамонта с упряжью. Второй игрок может запрыгнуть на сидящего мамонта.
+  
+achievement.elephant_garment=Азиатский стиль
+achievement.elephant_garment.desc=Наденьте одеяние на азиатского слона.
+  
+achievement.elephant_tusks=Боевая готовность
+achievement.elephant_tusks.desc=Наденьте бивни слону или мамонту. При ударе по ним кнутом с такими бивнями они будут ломать блоки впереди себя. Эффективность разрушения зависит от типа бивней и слона.
+  
+achievement.elephant_chest=Слоновий багаж
+achievement.elephant_chest.desc=Установите сундук слону или мамонту с упряжью. Слоны и мамонты могут иметь два слоновьих сундука. А мамонты вдобавок могут носить и два обычных сундука Minecraft. Сундуки открываются ключом.
+  
+achievement.elephant_howdah=Ваша светлость
+achievement.elephant_howdah.desc=Установите хаудах на азиатского слона в одеянии.
+  
+achievement.craft_medallion=Многоразовое переименование
+achievement.craft_medallion.desc=Создайте медальон для переименовывания питомцев.
+  
+achievement.tame_kitty=Котоукротитель
+achievement.tame_kitty.desc=Приручите котёнка, оставив жареной рыбы рядом с ним и надев на него медальон после этого.
+  
+achievement.kitty_litter_box=Кошачий туалет
+achievement.kitty_litter_box.desc=Создайте лоток для котика.
+  
+achievement.kitty_litter=Кошачьи дела
+achievement.kitty_litter.desc=Очистите использованный лоток песком. Процесс можно автоматизировать раздатчиком.
+  
+achievement.kitty_bed=Кошачья лежанка
+achievement.kitty_bed.desc=Создайте любую лежанку для котика.
+  
+achievement.pet_food=Кормёжка кота
+achievement.pet_food.desc=Наполните лежанку молоком или кормом. Процесс можно автоматизировать раздатчиком.
+  
+achievement.wool_ball=Игра с котиком
+achievement.wool_ball.desc=Создайте шерстяной клубок и дайте любопытному котику им поиграть.
+  
+achievement.tame_big_cat=Укротитель больших кошек
+achievement.tame_big_cat.desc=Приручите детёныша большой кошки, подкинув ему сырого мяса и надев медальон после еды.
+  
+achievement.big_cat_claw=Охотник на больших кошек
+achievement.big_cat_claw.desc=Добудьте коготь большой кошки.
+  
+achievement.craft_whip=Время кнута!
+achievement.craft_whip.desc=Создайте кнут. С помощью него вы можете сажать питомцев. Во время езды он позволить поддать скорости, а на кошмарных лошадях, единорогах и слонах вызовет особенные эффекты.
+  
+achievement.indiana=Прямо как Индиана Джонс
+achievement.indiana.desc=Используйте кнут на приручённой большой кошке более 6 раз.
+  
+achievement.shark_tooth=Боксёр с акулами
+achievement.shark_tooth.desc=Добудьте акулий зуб.
+  
+achievement.fish_net=Рыболовный сезон
+achievement.fish_net.desc=Создайте сеть для ловли и приручения самых водолюбивых созданий. Также вы можете использовать её для хранения любого водного питомца.
+  
+achievement.shark_sword=Зубастый меч
+achievement.shark_sword.desc=Создайте акулий меч. Акульи мечи можно чинить на наковальне, используя акульи зубы.
+  
+achievement.catch_fish_in_fish_bowl=Рыбка в аквариуме
+achievement.catch_fish_in_fish_bowl.desc=Поймайте рыбку в аквариум.
+  
+achievement.tame_bird=Птицелов
+achievement.tame_bird.desc=Приручите птицу, сначала бросая рядом семена, а потом откормив вручную из руки. Если разместить птицу на голове, она будет замедлять вам падения с высоких выступов.
+  
+achievement.feed_snake_with_live_mouse=Живой корм
+achievement.feed_snake_with_live_mouse.desc=Скрёстно ПКМ накормите взрослую змею живой мышью.
+  
+achievement.tame_panda=Укротитель панд
+achievement.tame_panda.desc=Приручите детёныша панды сахаром или бамбуком.
+  
+achievement.tame_scorpion=Скорпионовод
+achievement.tame_scorpion.desc=Приручите скорпионёнка поглаживаниями пустой рукой. Он питается гнилой плотью и крысятиной. Будучи взрослым, он сможет стать для вас ездовым. Также сможет карабкаться по стенам и снести яйцо при подкормке эссенцией тьмы.
+  
+achievement.ostrich_egg=Похититель яиц
+achievement.ostrich_egg.desc=Сведите диких страусов семенами арбуза и украдите яйцо. Как страусёнок повзрослеет, он сможет стать ездовым животным. Также вы можете трансформировать его при помощи эссенций.
+  
+achievement.ostrich_helmet=Надёжное снаряжение
+achievement.ostrich_helmet.desc=Наденьте любой шлем на взрослого страуса.
+  
+achievement.ostrich_chest=Страусиный багаж
+achievement.ostrich_chest.desc=Установите сундук страусу. Открывается ключом.
+  
+achievement.ostrich_flag=Знаменосец
+achievement.ostrich_flag.desc=Установите шерстяной блок на страуса с сундуком.
+  
+achievement.pet_amulet=Хранилище питомцев
+achievement.pet_amulet.desc=Создайте амулет питомцев. Он может хранить почти все виды питомцев.
+  
+achievement.cook_omelette=Солнышко на сковороде
+achievement.cook_omelette.desc=Приготовьте омлет из любого яйца.
+  
+achievement.cook_turkey=Сытнее курицы
+achievement.cook_turkey.desc=Приготовьте сырую индейку.
+  
+achievement.cook_ostrich=На вкус как говядина
+achievement.cook_ostrich.desc=Приготовьте сырого страуса.
+  
+achievement.cook_rat=На вкус как курица
+achievement.cook_rat.desc=Приготовьте сырую крысу.
+  
+achievement.rat_burger=Гурман-крысоед
+achievement.rat_burger.desc=Приготовьте крысбургер.
+  
+achievement.cook_crab=Морская классика
+achievement.cook_crab.desc=Приготовьте сырого краба.
+  
+achievement.cook_turtle=Сомнительный деликатес
+achievement.cook_turtle.desc=Приготовьте черепаховый суп.
+  
+achievement.kill_wraith=Охотник за привидениями
+achievement.kill_wraith.desc=Убейте духа.
+  
+achievement.kill_ogre=Убийца огров
+achievement.kill_ogre.desc=Убейте огра.
+  
+achievement.kill_werewolf=Убийца оборотней
+achievement.kill_werewolf.desc=Убейте оборотня в волчьей форме.
+  
+achievement.kill_big_golem=Убийца големов
+achievement.kill_big_golem.desc=Убейте большого голема и добудьте его ядро.
+  
+achievement.leonardo=Леонардо
+achievement.leonardo.desc=Получите катану от черепашки Леонардо. Вы можете приручить черепах, бросая тростник и кусочки арбуза рядом с ними. Катаны поддаются ремонту на наковальне с использованием железных слитков.
