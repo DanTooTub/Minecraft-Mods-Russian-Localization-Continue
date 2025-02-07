@@ -19,8 +19,8 @@ item.amuletbone.name=Костный амулет
 item.amuletbonefull.name=Костный амулет
 item.amuletfairy.name=Фейский амулет
 item.amuletfairyfull.name=Фейский амулет
-item.amuletghost.name=Амулет призрака
-item.amuletghostfull.name=Амулет призрака
+item.amuletghost.name=Призрачный амулет
+item.amuletghostfull.name=Призрачный амулет
 item.amuletpegasus.name=Небесный амулет
 item.amuletpegasusfull.name=Небесный амулет
 item.bigcatclaw.name=Коготь большой кошки
@@ -63,10 +63,10 @@ item.heartdarkness.name=Сердце тьмы
 item.heartfire.name=Сердце огня
 item.heartundead.name=Сердце нежити
 item.hide.name=Шкура
-item.hideboots.name=Кожаные ботинки
-item.hidehelmet.name=Кожаный колпак
-item.hidelegs.name=Кожаные штаны
-item.hidechest.name=Кожаная накидка
+item.hideboots.name=Шкурчатые ботинки
+item.hidehelmet.name=Шкурчатый колпак
+item.hidelegs.name=Шкурчатые штаны
+item.hidechest.name=Шкурчатая накидка
 item.horsearmorcrystal.name=Кристаллическая конская броня
 item.horsesaddle.name=Самодельное седло
 item.katana.name=Катана
@@ -144,19 +144,19 @@ item.nunchaku.name=Нунчаки
 item.omelet.name=Омлет
 item.ostrichcooked.name=Жареный страус
 item.ostrichraw.name=Сырой страус
-item.petamulet.name=Амулет питомца
-item.petamuletfull.name=Амулет питомца
+item.petamulet.name=Амулет питомцев
+item.petamuletfull.name=Амулет питомцев
 item.petfood.name=Кошачий корм
 item.ratburger.name=Крысбургер
 item.ratcooked.name=Жареная крыса
 item.ratraw.name=Сырая крыса
 item.recordshuffle.name=Пластинка зебры
 item.record.recordshuffle.desc=Шаффл
-item.reptilehide.name=Чешуя рептилии
-item.reptileboots.name=Сапоги из чешуи
-item.reptilelegs.name=Поножи из чешуи
-item.reptileplate.name=Нагрудник из чешуи
-item.reptilehelmet.name=Шлем из чешуи
+item.reptilehide.name=Рептилиевая чешуя
+item.reptileboots.name=Чешуйчатые ботинки
+item.reptilelegs.name=Чешуйчатые поножи
+item.reptileplate.name=Чешуйчатый нагрудник
+item.reptilehelmet.name=Чешуйчатый шлем
 item.sai.name=Сай
 item.scorpbootsdirt.name=Сапоги земляного скорпиона
 item.scorpbootscave.name=Сапоги пещерного скорпиона
@@ -290,6 +290,7 @@ container.MoCreatures.OstrichChest=Страусиный сундук
 container.MoCreatures.WyvernChest=Виверновый сундук
 
 notify.MoCreatures.egg_hatching=Яйцо скоро вылупится! НЕ ОТХОДИТЕ! Существо вылупится @ %1$s, %2$s, %3$s и пропадёт, если уйти далеко.
+
 notify.MoCreatures.max_pet_count_reached=Нельзя приручить больше существ. Достигнут лимит в %1$s питомцев, установленный владельцем сервера.
 
 death.MoCreatures.attack.dehydration=%1$s умер от обезвоживания
@@ -333,7 +334,7 @@ achievement.ghost_horse=Лошадь-призрак
 achievement.ghost_horse.desc=Иногда при смерти лошади 3 и выше уровней становятся призраками. Они питаются только эссенциями нежити.
   
 achievement.amulet_ghost=Хранилище лошадей-призраков
-achievement.amulet_ghost.desc=Создайте амулет призрака.
+achievement.amulet_ghost.desc=Создайте призрачный амулет.
   
 achievement.heart_fire=Сердце огня
 achievement.heart_fire.desc=Добудьте сердце огня из кошмарной лошади.
@@ -447,7 +448,7 @@ achievement.shark_sword=Зубастый меч
 achievement.shark_sword.desc=Создайте акулий меч. Акульи мечи можно чинить на наковальне, используя акульи зубы.
   
 achievement.catch_fish_in_fish_bowl=Рыбка в аквариуме
-achievement.catch_fish_in_fish_bowl.desc=Поймайте рыбку в аквариум.
+achievement.catch_fish_in_fish_bowl.desc=Поймайте рыбку в аквариумную чашу.
   
 achievement.tame_bird=Птицелов
 achievement.tame_bird.desc=Приручите птицу, сначала бросая рядом семена, а потом откормив вручную из руки. Если разместить птицу на голове, она будет замедлять вам падения с высоких выступов.
@@ -510,43 +511,43 @@ achievement.kill_big_golem=Убийца големов
 achievement.kill_big_golem.desc=Убейте большого голема и добудьте его ядро.
   
 achievement.leonardo=Леонардо
-achievement.leonardo.desc=Получите катану от черепашки Леонардо. Вы можете приручить черепах, бросая тростник и кусочки арбуза рядом с ними. Катаны поддаются ремонту на наковальне с использованием железных слитков.
+achievement.leonardo.desc=Получите катану от черепашки Леонардо. Вы можете приручать черепах, бросая тростник и кусочки арбуза рядом с ними. Катаны поддаются ремонту на наковальне с использованием железных слитков.
 
 achievement.raphael=Рафаэль
-achievement.raphael.desc=Добудьте сай от черепашки Рафаэля. Вы можете приручить черепах, бросая тростник и кусочки арбуза рядом с ними. Сай поддаётся ремонту на наковальне с использованием железных слитков.
+achievement.raphael.desc=Добудьте сай от черепашки Рафаэля. Вы можете приручать черепах, бросая тростник и кусочки арбуза рядом с ними. Сай поддаётся ремонту на наковальне с использованием железных слитков.
   
 achievement.donatello=Донателло
-achievement.donatello.desc=Добудьте бо от черепашки Донателло. Вы можете приручить черепах, бросая тростник и кусочки арбуза рядом с ними.
+achievement.donatello.desc=Добудьте бо от черепашки Донателло. Вы можете приручать черепах, бросая тростник и кусочки арбуза рядом с ними.
   
 achievement.michelangelo=Микеланджело
-achievement.michelangelo.desc=Добудьте нунчаки от черепашки Микеланджело. Вы можете приручить черепах, бросая тростник и кусочки арбуза рядом с ними. Нунчаки поддаются ремонту на наковальне с использованием железных слитков.
+achievement.michelangelo.desc=Добудьте нунчаки от черепашки Микеланджело. Вы можете приручать черепах, бросая тростник и кусочки арбуза рядом с ними. Нунчаки поддаются ремонту на наковальне с использованием железных слитков.
   
 achievement.silver_sword=Гроза оборотней
-achievement.silver_sword.desc=Добудьте серебряный меч от серебряного скелета.
+achievement.silver_sword.desc=Выбейте серебряный меч с серебряного скелета.
   
 achievement.get_fur=Убийца зверушек
 achievement.get_fur.desc=Добудьте мех.
   
 achievement.fur_armor=Эскимосский наряд
-achievement.fur_armor.desc=Создайте любую часть меховой брони. Ремонтируется мехом в наковальне.
+achievement.fur_armor.desc=Создайте любую из частей комплекта меховой брони. Ремонтируется мехом на наковальне.
   
 achievement.get_hide=Охотник
 achievement.get_hide.desc=Добудьте шкуру.
   
 achievement.hide_armor=Выбор егеря
-achievement.hide_armor.desc=Создайте любую часть кожаной брони. Ремонтируется шкурой в наковальне.
+achievement.hide_armor.desc=Создайте любую из частей комплекта шкурчатой брони. Ремонтируется шкурой на наковальне.
   
 achievement.get_reptile_hide=Охотник на рептилий
-achievement.get_reptile_hide.desc=Добудьте чешую рептилий.
+achievement.get_reptile_hide.desc=Добудьте рептилиевую чешую.
   
 achievement.reptile_armor=Крепка как железо
-achievement.reptile_armor.desc=Создайте любую часть брони из чешуи. Ремонтируется чешуёй в наковальне.
+achievement.reptile_armor.desc=Создайте любую из частей комплекта чешуйчатой брони. Ремонтируется чешуёй на наковальне.
   
 achievement.get_scorpion_material=Охотник на скорпионов
-achievement.get_scorpion_material.desc=Добудьте хитин или жало скорпиона.
+achievement.get_scorpion_material.desc=Добудьте скорпионий хитин или жало.
   
 achievement.scorpion_sword=Мечник скорпионов
-achievement.scorpion_sword.desc=Создайте любой меч скорпиона. Ремонтируется алмазами в наковальне.
+achievement.scorpion_sword.desc=Создайте любой меч скорпиона. Ремонтируется алмазами на наковальне.
   
 achievement.scorpion_armor=Воин скорпионов
-achievement.scorpion_armor.desc=Создайте любую часть брони скорпиона. Полный набор даёт бонус. Ремонтируется хитином того же типа в наковальне."
+achievement.scorpion_armor.desc=Создайте любую из частей комплекта брони скорпиона. Полный надетый комплект даёт бонус. Ремонтируется тем же скорпионьим хитином, из которого сделан, на наковальне."
