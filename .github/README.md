@@ -438,6 +438,10 @@
 * [**YooGoose**](https://github.com/RRimmer): предложил перевод модов:
 * * [Zenith Attributes](https://modrinth.com/mod/zenith-attributes);
 * * [Zenith](https://modrinth.com/mod/zenith);
+* [**NeCroZ**](https://github.com/RRimmer): предложил перевод модов:
+* * [Create Stuff & Additions](https://modrinth.com/mod/create-stuff-additions);
+* * [Create: The Factory Must Grow](https://modrinth.com/mod/create-tfmg);
+* * [Xaero's World Map](https://modrinth.com/mod/xaeros-world-map);
 * [**Nord_Act**](https://github.com/NordAct): помогла с API;
 * [**devin**](https://github.com/intergrav): создал дизайн [кнопок](https://github.com/intergrav/devins-badges), используемых в этом ридми-файле.
 
