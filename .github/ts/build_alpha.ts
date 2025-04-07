@@ -2,17 +2,70 @@
 
 //// Инициализация
 ////// Подключение пакетов, переменных среды, клиентов Гитхаба и Гугла
-const core = require("@actions/core");
-const github = require("@actions/github");
-const { google } = require("googleapis");
-const fs = require("fs");
-const path = require("path");
-const AdmZip = require("adm-zip");
-const execSync = require("child_process").execSync;
+import * as core from "@actions/core";
+import * as github from "@actions/github";
+import { google } from "googleapis";
+import * as fs from "fs";
+import * as path from "path";
+import AdmZip from "adm-zip";
+import { execSync } from "child_process";
+
+// Интерфейсы для типизации
+interface ChangedFile {
+  status: string;
+  filePath: string;
+}
+
+interface TagInfo {
+  tag: string;
+  title: string;
+  releaseNumMain: number;
+  releaseNumMinor: number;
+  candidateNum: number;
+  betaNum: number;
+  alphaNum: number;
+}
+
+interface ModInfo {
+  name: string;
+  url: string;
+  popularity: number;
+}
+
+interface ModChange {
+  action: string;
+  name: string;
+  url: string;
+  gameVer: string;
+  popularity: number;
+}
+
+interface AssetInfo {
+  path: string;
+  name: string;
+}
+
+interface GroupedMod {
+  action: string;
+  name: string;
+  url: string;
+  popularity: number;
+  versions: { original: string; numeric: number }[];
+}
+
+interface ModMatch {
+  row: any[];
+  rowGameVerRaw: string;
+  popularity: number;
+}
+
+interface VersionMap {
+  [baseName: string]: string;
+}
 
 ////// Загрузка переменных окружения GITHUB_TOKEN, GOOGLE_SERVICE_ACCOUNT_KEY
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GOOGLE_SERVICE_ACCOUNT_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
+const GOOGLE_SERVICE_ACCOUNT_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_KEY || "";
 
 ////// Создание клиентов octokit (Гитхаба) и sheets (Гугл-таблиц)
 const octokit = github.getOctokit(GITHUB_TOKEN);
@@ -96,7 +149,7 @@ const sheets = google.sheets({ version: "v4", auth });
 })();
 
 ////// Функция для получения последнего тега (альфа или бета)
-function getLastVersionTag(tags) {
+function getLastVersionTag(tags: any[]): string | null {
   //////// Фильтрация тегов по шаблонам
   const versionTags = tags.filter((tag) =>
     /^(?:dev\d+|\d+(?:\.0)?-C\d+-B\d+(?:-A\d+)?)$/.test(tag.name)
@@ -114,7 +167,7 @@ function getLastVersionTag(tags) {
 }
 
 ////// Функция для получения числового значения тега для сортировки
-function getVersionNumber(tag) {
+function getVersionNumber(tag: string): number {
   //////// Преобразование строки тега в числовое значение для сортировки
   //////// Учёт форматов devX и X(.Y)-CX-BX(-AX)
 
@@ -143,7 +196,7 @@ function getVersionNumber(tag) {
 }
 
 ////// Функция для определения следующего тега
-function getNextAlphaTag(lastTag) {
+function getNextAlphaTag(lastTag: string | null): TagInfo {
   let releaseNumMain = 1;
   let releaseNumMinor = 0;
   let candidateNum = 1;
@@ -195,7 +248,7 @@ function getNextAlphaTag(lastTag) {
 }
 
 ////// Функция для получения списка изменённых файлов
-function getChangedFiles(lastTag) {
+function getChangedFiles(lastTag: string | null): ChangedFile[] {
   //////// Выполнение команды git diff, чтобы узнать, какие файлы изменились с момента предыдущего тега
   //////// Возвращение списка объектов с полями status и filePath
 
@@ -222,9 +275,15 @@ function getChangedFiles(lastTag) {
 }
 
 ////// Функция для получения информации об изменениях модов
-async function getModChanges(changedFiles, sheets) {
-  const modChanges = [];
-  const newGameVersions = [];
+async function getModChanges(
+  changedFiles: ChangedFile[],
+  sheets: any
+): Promise<{
+  modChanges: ModChange[];
+  newGameVersions: string[];
+}> {
+  const modChanges: ModChange[] = [];
+  const newGameVersions: string[] = [];
 
   for (const file of changedFiles) {
     const decodedFilePath = file.filePath;
@@ -273,7 +332,11 @@ async function getModChanges(changedFiles, sheets) {
 // В getModInfoFromSheet(…) нормализуется как сохранённое название строки, так и запрошенный
 // идентификатор мода, чтобы «alexsmobs» могло соответствовать «Alex's Mobs», если идентификатора мода
 // нет. Также, если найдено несколько соответствий, выбирается строка с наивысшим значением популярности.
-async function getModInfoFromSheet(modId, gameVer, sheets) {
+async function getModInfoFromSheet(
+  modId: string,
+  gameVer: string,
+  sheets: any
+): Promise<ModInfo | null> {
   const spreadsheetId = "1kGGT2GGdG_Ed13gQfn01tDq2MZlVOC9AoiD1s3SDlZE";
   const range = "db!A1:Z1500";
 
@@ -302,7 +365,7 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
     .replace(/[ '\']/g, "");
 
   // Сборка всех возможных совпадений
-  const possibleMatches = [];
+  const possibleMatches: ModMatch[] = [];
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
     if (!row) continue;
@@ -327,8 +390,6 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
     if (idMatches || nameMatches) {
       let popularityVal = 0;
       if (popularityIndex !== -1 && row[popularityIndex]) {
-        // Конвертировать значение популярности в значение с плавающей запятой или оставить
-        // как 0, если не выйдет
         popularityVal =
           parseFloat(
             row[popularityIndex].toString().replace(/\s/g, "").replace(",", ".")
@@ -354,7 +415,7 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
     entry.rowGameVerRaw.startsWith(normalizedGameVer)
   );
 
-  let bestMatch = null;
+  let bestMatch: ModMatch | null = null;
   if (versionBasedMatches.length > 0) {
     // Сортировка по популярности
     versionBasedMatches.sort((a, b) => b.popularity - a.popularity);
@@ -365,6 +426,9 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
     possibleMatches.sort((a, b) => b.popularity - a.popularity);
     bestMatch = possibleMatches[0];
   }
+
+  // Если bestMatch === null, вернуть null
+  if (!bestMatch) return null;
 
   const bestRow = bestMatch.row;
   const rowName = bestRow[nameIndex] || modId;
@@ -382,11 +446,11 @@ async function getModInfoFromSheet(modId, gameVer, sheets) {
 
 // Функция для генерации описания выпуска
 async function generateReleaseNotes(
-  changedFiles,
-  sheets,
-  nextTagInfo,
-  lastTag
-) {
+  changedFiles: ChangedFile[],
+  sheets: any,
+  nextTagInfo: TagInfo,
+  lastTag: string | null
+): Promise<string> {
   let finalList = `Это ${nextTagInfo.alphaNum}-я альфа-версия всех переводов проекта.\n\n`;
 
   if (lastTag && /^dev\d+$/.test(lastTag)) {
@@ -401,7 +465,7 @@ async function generateReleaseNotes(
     changedFiles,
     sheets
   );
-  const allChanges = [];
+  const allChanges: string[] = [];
 
   // Добавление информации о новых версиях Minecraft (pack.mcmeta добавлен)
   newGameVersions.forEach((gameVer) => {
@@ -414,7 +478,7 @@ async function generateReleaseNotes(
   });
 
   // Группировка изменений модов
-  const grouped = {};
+  const grouped: Record<string, ModChange[]> = {};
   modChanges.forEach((change) => {
     // Ключ для группировки
     const key = `${change.name}::${change.url}`;
@@ -500,9 +564,9 @@ async function generateReleaseNotes(
   // с использованием эмодзи, подсписков и спойлеров.
 
   // Подготовим массивы для трёх типов изменений:
-  const flagChanges = []; // «начат перевод...»
-  const addedChanges = []; // «добавлен перевод...»
-  const modifiedChanges = []; // «изменён перевод...»
+  const flagChanges: string[] = []; // «начат перевод...»
+  const addedChanges: string[] = []; // «добавлен перевод...»
+  const modifiedChanges: string[] = []; // «изменён перевод...»
 
   // Разложим allChanges по категориям:
   for (const item of allChanges) {
@@ -576,7 +640,7 @@ async function generateReleaseNotes(
   // 3) Изменённые переводы
   if (modifiedChanges.length === 1) {
     currentIndex++;
-    // Если этот элемент последний во всём списке — ставим точку, иначе — запятую
+    // Если этот элемент последний во всём списке — ставим точку, в ином случае — запятую
     const endChar = currentIndex === totalItems ? "." : ",";
     finalList += `* 💱 изменён перевод мода ${modifiedChanges[0]}${endChar}\n`;
   } else if (modifiedChanges.length > 1) {
@@ -606,8 +670,9 @@ async function generateReleaseNotes(
 }
 
 // Функция для получения версий архивов из предыдущего выпуска
-
-async function getPreviousAssetVersions(lastTag) {
+async function getPreviousAssetVersions(
+  lastTag: string | null
+): Promise<VersionMap> {
   if (!lastTag) {
     return {};
   }
@@ -616,7 +681,7 @@ async function getPreviousAssetVersions(lastTag) {
     per_page: 100,
   });
   const lastRelease = releases.find((release) => release.tag_name === lastTag);
-  const versions = {};
+  const versions: VersionMap = {};
 
   if (lastRelease && lastRelease.assets && lastRelease.assets.length > 0) {
     lastRelease.assets.forEach((asset) => {
@@ -635,14 +700,13 @@ async function getPreviousAssetVersions(lastTag) {
 }
 
 // Функция для создания архивов с учётом версий файлов
-
 function createArchives(
-  changedFiles,
-  nextTagInfo,
-  previousAssetVersions,
-  lastTag
-) {
-  const assets = [];
+  changedFiles: ChangedFile[],
+  nextTagInfo: TagInfo,
+  previousAssetVersions: VersionMap,
+  lastTag: string | null
+): AssetInfo[] {
+  const assets: AssetInfo[] = [];
   const releasesDir = path.join(process.cwd(), "releases");
   if (!fs.existsSync(releasesDir)) {
     fs.mkdirSync(releasesDir, { recursive: true });
@@ -753,7 +817,7 @@ function createArchives(
           assetVersion = prevVersionNumber;
         }
       } else {
-        // Если нет предыдущей версии, начинаем с 1-й альфы или используем версию из dev
+        // Если нет предыдущей версии, начинаем с первой альфы или используем версию из dev
         if (lastTag && lastTag.startsWith("dev")) {
           const devNumber = parseInt(lastTag.slice(3));
           assetVersion = `1.0-C1-B1-A${devNumber}`;
@@ -812,7 +876,7 @@ function createArchives(
           assetVersion = prevVersionNumber;
         }
       } else {
-        // Если нет предыдущей версии, начинаем с 1-й альфы или используем версию из dev
+        // Если нет предыдущей версии, начинаем с первой альфы или используем версию из dev
         if (lastTag && lastTag.startsWith("dev")) {
           const devNumber = parseInt(lastTag.slice(3));
           assetVersion = `1.0-C1-B1-A${devNumber}`;
@@ -841,7 +905,7 @@ function createArchives(
 }
 
 // Функция для извлечения номера версии из названия архива
-function getAssetVersionNumber(version) {
+function getAssetVersionNumber(version: string): string {
   // Если тег devNN
   if (version.startsWith("dev")) {
     return version.replace("dev", "1.0-C1-B1-A");
@@ -850,7 +914,7 @@ function getAssetVersionNumber(version) {
 }
 
 // Функция для увеличения версии
-function incrementAssetVersion(version) {
+function incrementAssetVersion(version: string): string {
   // Ищем паттерн: 1.0-C1-B1-A1
   const match = version.match(/^(\d+)(?:\.(\d+))?-C(\d+)-B(\d+)-A(\d+)$/);
   if (match) {
@@ -865,7 +929,11 @@ function incrementAssetVersion(version) {
 }
 
 // Функция для создания выпуска на Гитхабе
-async function createRelease(tagInfo, releaseNotes, assets) {
+async function createRelease(
+  tagInfo: TagInfo,
+  releaseNotes: string,
+  assets: AssetInfo[]
+): Promise<void> {
   const releaseResponse = await octokit.rest.repos.createRelease({
     ...github.context.repo,
     tag_name: tagInfo.tag,
@@ -876,17 +944,16 @@ async function createRelease(tagInfo, releaseNotes, assets) {
     prerelease: true,
   });
 
-  const uploadUrl = releaseResponse.data.upload_url;
+  // Получение идентификатора созданного выпуска
+  const releaseId = releaseResponse.data.id;
+
   for (const asset of assets) {
     const content = fs.readFileSync(asset.path);
     await octokit.rest.repos.uploadReleaseAsset({
-      url: uploadUrl,
-      headers: {
-        "content-type": "application/zip",
-        "content-length": content.length,
-      },
+      ...github.context.repo,
+      release_id: releaseId,
       name: asset.name,
-      data: content,
+      data: content as unknown as string,
     });
     console.log(`Загружен ассет: ${asset.name}`);
   }
