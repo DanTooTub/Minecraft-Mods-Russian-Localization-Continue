@@ -523,13 +523,55 @@ async function generateReleaseNotes(
     };
   });
 
-  // Сортируем по популярности, затем по названию
+  // Сортируем сначала по названию, затем по версии игры
   groupedList.sort((a, b) => {
-    if (b.popularity !== a.popularity) {
-      return b.popularity - a.popularity;
+    // Сначала по названию мода
+    const nameCompare = a.name.localeCompare(b.name);
+    if (nameCompare !== 0) {
+      return nameCompare;
     }
-    // Если популярность одинаковая, то по названию
-    return a.name.localeCompare(b.name);
+
+    // Если названия одинаковые, сортируем по версии игры (выбираем наивысшую)
+    // Получаем наивысшую версию для каждого мода
+    const getHighestVersion = (mod: typeof a) => {
+      if (mod.versions.length === 0) return -1;
+      const sortedVersions = [...mod.versions].sort((v1, v2) => {
+        // Сортировка по порядку версий Майнкрафта
+        const versionOrder = {
+          "1.21": 17,
+          "1.20": 16,
+          "1.19": 15,
+          "1.18": 14,
+          "1.17": 13,
+          "1.16": 12,
+          "1.15": 11,
+          "1.14": 10,
+          "1.13": 9,
+          "1.12": 8,
+          "1.11": 7,
+          "1.10": 6,
+          "1.9": 5,
+          "1.8": 4,
+          "1.7": 3,
+          "1.6": 2,
+          "b1.7.3": 1,
+        };
+
+        // Получаем версию без дробной части после первой точки: 1.19.2 -> 1.19
+        const v1Base = v1.original.split(".").slice(0, 2).join(".");
+        const v2Base = v2.original.split(".").slice(0, 2).join(".");
+
+        return (versionOrder[v2Base] || 0) - (versionOrder[v1Base] || 0);
+      });
+
+      return sortedVersions[0].numeric;
+    };
+
+    const aHighestVer = getHighestVersion(a);
+    const bHighestVer = getHighestVersion(b);
+
+    // Сортируем по убыванию версии
+    return bHighestVer - aHighestVer;
   });
 
   // Формируем строки описаний для каждой группы
@@ -556,7 +598,13 @@ async function generateReleaseNotes(
       }
     }
 
-    const line = `${action} перевод мода [${name}](${url}) на Minecraft ${versionText}`;
+    // Проверяем ссылку и форматируем соответствующим образом
+    let nameDisplay = name;
+    if (url && url.toUpperCase() !== "FALSE") {
+      nameDisplay = `[${name}](${url})`;
+    }
+
+    const line = `${action} перевод мода ${nameDisplay} на Minecraft ${versionText}`;
     allChanges.push(line);
   }
 
