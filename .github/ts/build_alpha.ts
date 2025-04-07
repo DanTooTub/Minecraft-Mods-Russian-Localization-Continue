@@ -467,7 +467,7 @@ async function generateReleaseNotes(
   );
   const allChanges: string[] = [];
 
-  // Добавление информации о новых версиях Minecraft (pack.mcmeta добавлен)
+  // Добавление информации о новых версиях Майнкрафта (pack.mcmeta добавлен)
   newGameVersions.forEach((gameVer) => {
     // Если версия — b1.7.3, не добавляем суффикс .x
     if (gameVer === "b1.7.3") {
@@ -531,47 +531,47 @@ async function generateReleaseNotes(
       return nameCompare;
     }
 
-    // Если названия одинаковые, сортируем по версии игры (выбираем наивысшую)
-    // Получаем наивысшую версию для каждого мода
-    const getHighestVersion = (mod: typeof a) => {
-      if (mod.versions.length === 0) return -1;
-      const sortedVersions = [...mod.versions].sort((v1, v2) => {
-        // Сортировка по порядку версий Майнкрафта
-        const versionOrder = {
-          "1.21": 17,
-          "1.20": 16,
-          "1.19": 15,
-          "1.18": 14,
-          "1.17": 13,
-          "1.16": 12,
-          "1.15": 11,
-          "1.14": 10,
-          "1.13": 9,
-          "1.12": 8,
-          "1.11": 7,
-          "1.10": 6,
-          "1.9": 5,
-          "1.8": 4,
-          "1.7": 3,
-          "1.6": 2,
-          "b1.7.3": 1,
-        };
-
-        // Получаем версию без дробной части после первой точки: 1.19.2 -> 1.19
-        const v1Base = v1.original.split(".").slice(0, 2).join(".");
-        const v2Base = v2.original.split(".").slice(0, 2).join(".");
-
-        return (versionOrder[v2Base] || 0) - (versionOrder[v1Base] || 0);
-      });
-
-      return sortedVersions[0].numeric;
+    // Сортировка по порядку версий Майнкрафта от высших (1.21) к низшим
+    const versionOrder = {
+      "1.21": 17,
+      "1.20": 16,
+      "1.19": 15,
+      "1.18": 14,
+      "1.17": 13,
+      "1.16": 12,
+      "1.15": 11,
+      "1.14": 10,
+      "1.13": 9,
+      "1.12": 8,
+      "1.11": 7,
+      "1.10": 6,
+      "1.9": 5,
+      "1.8": 4,
+      "1.7": 3,
+      "1.6": 2,
+      "b1.7.3": 1,
     };
 
-    const aHighestVer = getHighestVersion(a);
-    const bHighestVer = getHighestVersion(b);
+    // Получаем базовую версию для каждого мода (без минорной части)
+    const getBaseVersion = (version: string) => {
+      return version.split(".").slice(0, 2).join(".");
+    };
 
-    // Сортируем по убыванию версии
-    return bHighestVer - aHighestVer;
+    // Определяем значимость каждой версии на основе versionOrder
+    const aHighestVersion = a.versions.reduce((max, ver) => {
+      const baseVer = getBaseVersion(ver.original);
+      const weight = versionOrder[baseVer] || 0;
+      return Math.max(max, weight);
+    }, 0);
+
+    const bHighestVersion = b.versions.reduce((max, ver) => {
+      const baseVer = getBaseVersion(ver.original);
+      const weight = versionOrder[baseVer] || 0;
+      return Math.max(max, weight);
+    }, 0);
+
+    // Сортируем по убыванию весов версий (от высшей к низшей)
+    return bHighestVersion - aHighestVersion;
   });
 
   // Формируем строки описаний для каждой группы

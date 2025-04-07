@@ -107,7 +107,7 @@
     "gui.xaero_map_zoom_out": "Уменьшить (альтернативный)",
     "gui.xaero_mw_manual": "Ручной",
     "gui.xaero_mw_server": "Сервер",
-    "gui.xaero_mw_server_box": "Выбор карты автоматически контролируется сервером. Вы можете отключить это с помощью \"ignoreServerLevelId\" в конфигурации для конкретного сервера в директории XaeroWorldMap.",
+    "gui.xaero_mw_server_box": "Выбор карты автоматически контролируется сервером. Вы можете отключить это с помощью \"ignoreServerLevelId\" в конфигурации для конкретного сервера в каталоге XaeroWorldMap.",
     "gui.xaero_mw_single": "Одиночная",
     "gui.xaero_mw_spawn": "Спавн мира",
     "gui.xaero_no_world_map_item_message": "Мод настроен на требование следующего предмета в вашем хотбаре или на теле:",

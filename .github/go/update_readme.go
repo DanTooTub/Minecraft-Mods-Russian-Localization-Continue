@@ -223,12 +223,13 @@ func fetchModIconAndLink(mod RequestData) (string, string) {
 	} else if mod.CurseforgeID != "" && strings.ToUpper(mod.CurseforgeID) != "FALSE" {
 		// Используем API Кёрсфорджа
 		fmt.Printf("Смотрим мод %s, идентификатор у него: %s\n", mod.Name, mod.CurseforgeID)
-		apiKey := os.Getenv("CFCORE_API_TOKEN")
-		if apiKey != "" {
+		apiToken := os.Getenv("CFCORE_API_TOKEN")
+		if apiToken != "" {
 			client := &http.Client{}
 			req, err := http.NewRequest("GET", fmt.Sprintf("https://api.curseforge.com/v1/mods/%s", mod.CurseforgeID), nil)
 			if err == nil {
-				req.Header.Add("x-api-key", apiKey)
+				// Использовать правильный заголовок для аутентификации
+				req.Header.Add("X-Api-Token", apiToken)
 				resp, err := client.Do(req)
 				if err == nil && resp.StatusCode == http.StatusOK {
 					var cfResp map[string]interface{}
@@ -317,19 +318,60 @@ func generateModsTable(topMods []ModCount, data []RequestData) []string {
 
 // updateReadme обновляет таблицу востребованных модов в README.md
 func updateReadme(tableRows []string) {
-	// Читаем README.md
-	content, err := ioutil.ReadFile("README.md")
-	if err != nil {
-		fmt.Printf("Не удалось прочитать README.md: %v\n", err)
+	// Определяем список возможных расположений файла README.md
+	possiblePaths := []string{
+		"README.md",               // Корневая директория
+		"../README.md",            // Уровень выше
+		"../../README.md",         // Два уровня выше
+		".github/README.md",       // В папке .github
+		"../.github/README.md",    // Уровень выше в папке .github
+		"../../.github/README.md", // Два уровня выше в папке .github
+	}
+
+	// Ищем файл README.md в возможных расположениях
+	var readmePath string
+	for _, path := range possiblePaths {
+		if _, err := os.Stat(path); err == nil {
+			readmePath = path
+			fmt.Printf("Найден README.md по пути: %s\n", readmePath)
+			break
+		}
+	}
+
+	// Если файл не найден, выходим с ошибкой
+	if readmePath == "" {
+		fmt.Println("Не удалось найти README.md ни в одном из ожидаемых расположений")
 		os.Exit(1)
+	}
+
+	// Читаем README.md
+	content, err := ioutil.ReadFile(readmePath)
+	if err != nil {
+		fmt.Printf("Не удалось прочитать README.md по пути %s: %v\n", readmePath, err)
+		os.Exit(1)
+	}
+
+	// Вывести содержимое файла для отладки
+	fmt.Println("Содержимое файла README.md (первые 500 символов):")
+	if len(content) > 500 {
+		fmt.Println(string(content[:500]) + "...")
+	} else {
+		fmt.Println(string(content))
 	}
 
 	// Формируем новую таблицу
 	tableHeader := "| Значок | Описание |\n| :-: | :-: |"
 	table := tableHeader + "\n" + strings.Join(tableRows, "\n")
 
+	// Сохраняем путь к README.md для последующего использования
+	if err := ioutil.WriteFile("readme_path.txt", []byte(readmePath), 0644); err != nil {
+		fmt.Printf("Не удалось сохранить путь к README.md: %v\n", err)
+	} else {
+		fmt.Printf("Путь к README.md сохранён в файле readme_path.txt: %s\n", readmePath)
+	}
+
 	// Регулярное выражение для поиска существующей таблицы
-	re := regexp.MustCompile(`## Моды востребованные для перевода\n\n.*?<div align=center>\n\n(.*?)\n\n</div>`)
+	re := regexp.MustCompile(`(?s)## Моды востребованные для перевода.*?<div align=center>.*?</div>`)
 	strContent := string(content)
 
 	// Заменяем существующую таблицу на новую
@@ -338,13 +380,33 @@ func updateReadme(tableRows []string) {
 	var newContent string
 	if re.MatchString(strContent) {
 		newContent = re.ReplaceAllString(strContent, newSection)
+		fmt.Println("Раздел с таблицей востребованных модов найден и обновлён.")
 	} else {
 		fmt.Println("Раздел с таблицей востребованных модов не найден в README.md.")
+		fmt.Println("Проверим содержимое на наличие ключевых слов:")
+
+		if strings.Contains(strContent, "Моды востребованные для перевода") {
+			fmt.Println("Заголовок 'Моды востребованные для перевода' найден.")
+		} else {
+			fmt.Println("Заголовок 'Моды востребованные для перевода' НЕ найден.")
+		}
+
+		if strings.Contains(strContent, "<div align=center>") {
+			fmt.Println("Тег '<div align=center>' найден.")
+		} else {
+			fmt.Println("Тег '<div align=center>' НЕ найден.")
+		}
+
+		if strings.Contains(strContent, "</div>") {
+			fmt.Println("Тег '</div>' найден.")
+		} else {
+			fmt.Println("Тег '</div>' НЕ найден.")
+		}
 		return
 	}
 
 	// Записываем обновлённый README.md
-	err = ioutil.WriteFile("README.md", []byte(newContent), 0644)
+	err = ioutil.WriteFile(readmePath, []byte(newContent), 0644)
 	if err != nil {
 		fmt.Printf("Не удалось записать обновлённый README.md: %v\n", err)
 		os.Exit(1)
