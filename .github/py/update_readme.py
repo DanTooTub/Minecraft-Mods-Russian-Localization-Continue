@@ -70,7 +70,7 @@ def fetch_mod_icon_and_link(mod_entry):
     icon_url = ''
     mod_link = ''
     if modrinth_id and modrinth_id.lower() != 'false':
-        # Используем Modrinth API
+        # Используем API Модринта
         modrinth_api_url = f'https://api.modrinth.com/v2/project/{modrinth_id}'
         response = requests.get(modrinth_api_url)
         if response.status_code == 200:
@@ -78,7 +78,7 @@ def fetch_mod_icon_and_link(mod_entry):
             icon_url = mod_data.get('icon_url', '')
             mod_link = mod_data.get('website_url', f'https://modrinth.com/mod/{modrinth_id}')
         else:
-            print(f'Не удалось получить данные {name} с Modrinth')
+            print(f'Не удалось получить данные {name} с Модринта')
     elif curseforge_id and curseforge_id.lower() != 'false':
         # Используем CurseForge API
         print(f"Смотрим мод {name}, идентификатор у него: {curseforge_id}")
@@ -118,7 +118,7 @@ def generate_mods_table(top_mods, data):
         icon_url, mod_link = fetch_mod_icon_and_link(mod_entry)
         game_ver = mod_entry.get('gameVer', '')
         # Подготовка строки таблицы
-        # Проверяем, используется ли значок с Modrinth
+        # Проверяем, используется ли значок с Модринта
         if icon_url and 'modrinth' in icon_url:
             icon_html = f'<img width=80 height=80 src="{icon_url}">'
         else:
