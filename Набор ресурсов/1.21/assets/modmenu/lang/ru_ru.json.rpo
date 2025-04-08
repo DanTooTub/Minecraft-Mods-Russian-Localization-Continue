@@ -1,5 +1,5 @@
 {
-    condition: "general.modsWordStyle.mod",
+    "condition": "general.modsWordStyle === 'mod'",
     "fallbacks": [
         "assets/modmenu/lang/ru_ru_alt/hybrid.json",
         "assets/modmenu/lang/ru_ru_alt/modification.json"
