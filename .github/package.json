@@ -8,11 +8,11 @@
     "googleapis": "^144.0.0",
     "semver": "^7.6.3"
   },
-  "description": "Набор ресурсов, разрабатываемый для версий Minecraft от 1.6.x до 1.21.x, затрагивающий перевод модов, сделанных под загрузчики Forge, Fabric, Quilt и NeoForge.",
+  "description": "Проект локализаций, разрабатываемый для версий Minecraft от 1.6.x до 1.21.x, затрагивающий перевод модов, сделанных под загрузчики Forge, Fabric, Quilt и NeoForge, а также сборок модов и наборов шейдеров",
   "keywords": [],
   "license": "ISC",
   "main": "index.js",
-  "name": "minecraft-mods-russian-translation",
+  "name": "minecraft-mods-russian-localization",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

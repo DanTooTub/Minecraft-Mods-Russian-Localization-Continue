@@ -1,3 +1,5 @@
+// Сценарий для автоматической генерации списка изменений при выпуске новых версий
+
 const { google } = require('googleapis');
 const core = require('@actions/core');
 const github = require('@actions/github');
