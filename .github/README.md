@@ -298,9 +298,9 @@
 
 ## 🚀 Установка
 
-Скачать набор ресурсов можно [здесь в GitHub со списка выпусков](https://github.com/RushanM/Minecraft-Mods-Russian-Translation/releases) или со следующих сайтов:
+Скачать набор ресурсов можно [здесь в GitHub со списка выпусков](https://github.com/DanTooTub/Minecraft-Mods-Russian-Translation-Continue/releases) или со следующих сайтов:
 <div align="center">
-<a href="https://modrinth.com/resourcepack/mods-ru">
+<a href="https://modrinth.com/resourcepack/mods-ru-continue">
     <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/modrinth_compact_vector.svg?raw=true">
 </a>
 <a href="https://www.curseforge.com/minecraft/texture-packs/mods-ru">
@@ -310,9 +310,6 @@
 </a>
 <a href="https://ru-minecraft.ru/fayly-dlya-minecraft/79004-mods-ru.html">
     <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/rumc_compact_vector.svg?raw=true">
-</a>
-<a href="https://vk.com/demipr">
-    <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/vk_compact_vector.svg?raw=true">
 </a>
 </a>
 </div>
@@ -462,4 +459,5 @@
 * [Telegram](https://t.me/DanTooTub_channel) (канал)
 * [Telegram ЛС](https://t.me/DanTooTub)
 * Discord: dantootubz
+
 
