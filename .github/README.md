@@ -122,7 +122,7 @@
 | [e4mc](https://modrinth.com/mod/e4mc) | 🟥 | 🟥 | 🟥 | 🟥 | ✅ Рус.<br>✅ Укр. | ✅ Рус.<br>✅ Укр. | ✅ Рус.<br>✅ Укр. | ✅ Рус.<br>✅ Укр. |
 | [Embeddium++](https://modrinth.com/mod/embeddiumplus) | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥
 | [EmbeddiumUI](https://modrinth.com/mod/embyui) | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | ✅ Рус. | 🟥 |
-| [EMI](https://modrinth.com/mod/emi) | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥
+| [EMI](https://modrinth.com/mod/emi) | ⬛ | ⬛ | ⬛ | ⬛ | 🟥 | 🟥 | 🟥 | 🟥
 | [Enchantment Descriptions](https://www.curseforge.com/minecraft/mc-mods/enchantment-descriptions) | 🟥 | 🟥 | 🟥 | 🟥 | ✅ Рус. | 🟥 | 🟥 | 🟥 |
 | [Endless Music](https://modrinth.com/mod/endless-music) | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | ✅ Рус. |
 | [Enhanced Attack Indicator](https://modrinth.com/mod/enhanced-attack-indicator) | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | 🟥 | ✅ Рус. |
@@ -461,6 +461,7 @@
 * [Telegram](https://t.me/DanTooTub_channel) (канал)
 * [Telegram ЛС](https://t.me/DanTooTub)
 * Discord: dantootubz
+
 
 
 
