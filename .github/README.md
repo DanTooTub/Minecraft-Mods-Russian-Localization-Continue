@@ -308,9 +308,6 @@
 <a href="https://www.planetminecraft.com/texture-pack/mods-russian-translation-6270800/">
     <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/planet_compact_vector.svg?raw=true">
 </a>
-<a href="https://ru-minecraft.ru/fayly-dlya-minecraft/79004-mods-ru.html">
-    <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/rumc_compact_vector.svg?raw=true">
-</a>
 </a>
 </div>
 
@@ -461,6 +458,7 @@
 * [Telegram](https://t.me/DanTooTub_channel) (канал)
 * [Telegram ЛС](https://t.me/DanTooTub)
 * Discord: dantootubz
+
 
 
 
