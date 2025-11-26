@@ -301,13 +301,10 @@
 Скачать набор ресурсов можно [здесь в GitHub со списка выпусков](https://github.com/DanTooTub/Minecraft-Mods-Russian-Translation-Continue/releases) или со следующих сайтов:
 <div align="center">
 <a href="https://modrinth.com/resourcepack/mods-ru-continue">
-    <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/modrinth_compact_vector.svg?raw=true">
+    <img height="35" src="https://github.com/DanTooTub/Minecraft-Mods-Russian-Translation-Continue/blob/master/assets/modrinth_compact_vector.svg?raw=true">
 </a>
 <a href="https://www.curseforge.com/minecraft/texture-packs/mods-ru">
-    <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/curseforge_compact_vector.svg?raw=true">
-<a href="https://www.planetminecraft.com/texture-pack/mods-russian-translation-6270800/">
-    <img height="35" src="https://github.com/RushanM/Minecraft-Mods-Russian-Translation/blob/beta/Ассеты/planet_compact_vector.svg?raw=true">
-</a>
+    <img height="35" src="https://github.com/DanTooTub/Minecraft-Mods-Russian-Translation-Continue/blob/master/assets/curseforge_compact_vector.svg?raw=true">
 </a>
 </div>
 
@@ -458,9 +455,3 @@
 * [Telegram](https://t.me/DanTooTub_channel) (канал)
 * [Telegram ЛС](https://t.me/DanTooTub)
 * Discord: dantootubz
-
-
-
-
-
-
