@@ -18,6 +18,7 @@
 
 ## ✉️ Контакты для связи
 
-* [Telegram](https://t.me/DanTooTub_channel) (канал)
+* [Telegram](https://t.me/mods_ru_continue) (канал)
 * [Telegram ЛС](https://t.me/DanTooTub)
 * Discord: dantootubz
+
